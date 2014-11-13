@@ -1,0 +1,20 @@
+= form_for @warehouse do |f|
+  - if @warehouse.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@warehouse.errors.count, "error")} prohibited this warehouse from being saved:"
+      %ul
+        - @warehouse.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-horizontal
+    .form-group 
+      = f.label :product_id, :class => 'col-md-3 control-label'
+      .col-md-5
+        = f.collection_select :product_id, Product.all, :id, :name, :class => 'form-control'
+    .form-group 
+      = f.label :quantity, :class => 'col-md-3 control-label'
+      .col-md-5
+        = f.text_field :quantity, :class => 'form-control'
+    .actions.col-md-3.col-md-offset-5
+      = f.submit 'Save', :class => 'btn btn-primary'
+      = link_to 'Back', warehouses_path, :class => 'btn btn-primary'

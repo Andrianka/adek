@@ -1,0 +1,33 @@
+.row
+  .col-md-12
+    .btable.panel
+      .panel-header
+        %h2
+          ="Listing users"
+      .panel-body
+        .scroller
+          %table.table.table-striped.table-bordered.bootstrap-datatable.datatable#table-user
+            %thead
+              %tr
+                %th First name
+                %th Last name
+                %th Firm
+                %th
+                %th
+                %th
+            %tbody
+              - @users.each do |user|
+                %tr
+                  %td= user.first_name
+                  %td= user.last_name
+                  %td= user.firm
+                  %td= link_to 'Show', user
+                  %td= link_to 'Edit', edit_user_path(user)
+                  %td= link_to 'Destroy', user, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+
+
+    .btn.btn-primary.btn-lg= link_to 'New User', new_user_path
+
+:javascript
+  $('#table-users').dataTable();

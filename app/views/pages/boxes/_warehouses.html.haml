@@ -1,0 +1,24 @@
+.btable.panel
+  .panel-header
+    ="Listing warehouses"
+  .panel-body
+    .scroller
+      %table.table.table-striped.table-bordered.bootstrap-datatable.datatable#table-warehouse
+        %thead
+          %tr
+            %th Product
+            %th Quantity
+            %th
+            %th
+            %th
+        %tbody
+          - @warehouses.each do |warehouse|
+            %tr
+              %td= warehouse.product_id
+              %td= warehouse.quantity
+              %td= link_to 'Show', warehouse
+              %td= link_to 'Edit', edit_warehouse_path(warehouse)
+              %td= link_to 'Destroy', warehouse, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+:javascript
+  $('#table-warehouse').dataTable();

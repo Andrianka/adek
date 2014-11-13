@@ -1,0 +1,30 @@
+#header
+  %h1
+    %a{:href => "#"}
+      %img.logo{:alt => "Adek", :src => "assets/logo.png", :title => "Adek"}/
+  #menu
+    %ul.navigation
+      %li
+        %a.selected{:href => root_path}
+          Home
+          %span.ui_icon.home
+      %li
+        %a{:href => orders_path} Zamówienia
+      %li
+        %a{:href => products_path} Produkty
+      %li.dropdown
+        %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+          Akcje
+          %span.caret
+        %ul.dropdown-menu{:role => "menu"}
+          %li
+            %a{:href => new_order_path} Dodaj zamówienie
+          %li
+            %a{:href => new_user_path} Dodaj klienta
+          %li
+            %a{:href => new_product_path} Dodaj produkt
+      %li
+        - if user_signed_in?
+          =link_to "Logout",    destroy_user_session_path, :method => :delete
+        -else
+          =link_to 'Login', new_user_session_path

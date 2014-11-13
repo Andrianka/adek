@@ -1,0 +1,24 @@
+.row
+  .col-md-12
+    .btable.panel
+      .panel-header{"data-original-title" => ""}
+        %h2
+          ="Listing shops"
+      .panel-body
+        .scroller
+          %table.table.table-striped.table-bordered.bootstrap-datatable.datatable#table-menu
+            %thead
+              %tr
+                %th Name
+                %th
+                %th
+                %th
+            %tbody
+              - @shops.each do |shop|
+                %tr
+                  %td= shop.name
+                  %td= link_to 'Show', shop
+                  %td= link_to 'Edit', edit_shop_path(shop)
+                  %td= link_to 'Destroy', shop, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+    .btn.btn-primary.btn-lg= link_to 'New Shop', new_shop_path

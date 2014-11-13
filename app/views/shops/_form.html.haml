@@ -1,0 +1,16 @@
+= form_for @shop do |f|
+  - if @shop.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@shop.errors.count, "error")} prohibited this shop from being saved:"
+      %ul
+        - @shop.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-horizontal
+    .form-group 
+      = f.label :name, :class => 'col-md-3 control-label'
+      .col-md-5
+        = f.text_field :name, :class => 'form-control'
+    .actions.col-md-3.col-md-offset-5
+      = f.submit 'Save', :class => 'btn btn-primary'
+      = link_to 'Back', shops_path, :class => 'btn btn-primary'

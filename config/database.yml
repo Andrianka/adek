@@ -1,0 +1,21 @@
+development:
+  adapter: postgresql
+  database: adek_development
+  pool: 5
+  timeout: 5000
+
+test:
+  adapter: postgresql
+  database: adek_test
+  pool: 5
+  timeout: 5000
+
+production:
+  adapter: postgresql
+  pool: 5
+  timeout: 5000
+  database: adek
+  username: adek
+  password: paczkowadek54
+  host: pgsql
+

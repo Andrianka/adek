@@ -1,0 +1,34 @@
+.row
+  .col-md-12
+    .btable.panel
+      .panel-header{"data-original-title" => ""}
+        %h2
+          ="Listing orders"
+      .panel-body
+        .scroller
+          %table.table.table-striped.table-bordered.bootstrap-datatable.datatable#table-menu
+            %thead
+              %tr
+                %th Product
+                %th User
+                %th Status
+                %th Price
+                %th
+                %th
+                %th
+            %tbody
+              - @orders.each do |order|
+                %tr
+                  %td= order.product_id
+                  %td= order.user_id
+                  %td= order.status
+                  %td= order.price
+                  %td= link_to 'Show', order
+                  %td= link_to 'Edit', edit_order_path(order)
+                  %td= link_to 'Destroy', order, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+    / -if can? :access, :menu_panel
+    .btn.btn-primary.btn-lg= link_to 'New Order', new_order_path, :type => "button" 
+
+:javascript
+  $('#table-menu').dataTable();

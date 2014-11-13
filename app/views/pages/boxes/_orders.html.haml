@@ -1,0 +1,28 @@
+.btable.panel
+  .panel-header
+    ="Zamówienia"
+  .panel-body
+    .scroller
+      %table.table.table-striped.table-bordered.bootstrap-datatable.datatable#table-orders
+        %thead
+          %tr
+            %th Produkty
+            %th Klient
+            %th Status
+            %th Cena
+            %th
+            %th
+            %th
+        %tbody
+          - @orders.each do |order|
+            %tr
+              %td= order.products
+              %td= order.user.name
+              %td= order.status
+              %td= order.price
+              %td= link_to 'Show', order
+              %td= link_to 'Edit', edit_order_path(order)
+              %td= link_to 'Destroy', order, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+:javascript
+  $('#table-orders').dataTable();
