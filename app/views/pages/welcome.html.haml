@@ -1,9 +1,11 @@
+=render "pages/boxes/orders"
+=render "pages/boxes/products"
+=render "pages/boxes/warehouses"
+=render "pages/boxes/users"
 
-.col-md-12
-	=render "pages/boxes/orders"
-.col-md-12
-	=render "pages/boxes/products"
-.col-md-12
-	=render "pages/boxes/warehouses"
-.col-md-12
-	=render "pages/boxes/users"
+:javascript
+  $(".scroller").slimScroll({
+      height: '300px',
+      railVisible: true,
+      alwaysVisible: false
+   });

@@ -4,4 +4,12 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 	has_many :orders
+
+	def name
+		if self.first_name.blank?
+			self.email
+		else
+			"#{self.first_name} #{self.last_name}"
+		end
+	end
 end

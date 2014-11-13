@@ -1,6 +1,6 @@
 .btable.panel
   .panel-header
-    ="Listing warehouses"
+    ="Magazyn"
   .panel-body
     .scroller
       %table.table.table-striped.table-bordered.bootstrap-datatable.datatable#table-warehouse
@@ -16,9 +16,9 @@
             %tr
               %td= warehouse.product_id
               %td= warehouse.quantity
-              %td= link_to 'Show', warehouse
-              %td= link_to 'Edit', edit_warehouse_path(warehouse)
-              %td= link_to 'Destroy', warehouse, :method => :delete, :data => { :confirm => 'Are you sure?' }
+              %td= link_to 'Show', warehouse, class:"btn btn-sm btn-primary"
+              %td= link_to 'Edit', edit_warehouse_path(warehouse), class:"btn btn-sm btn-primary"
+              %td= link_to 'Destroy', warehouse, :method => :delete, :data => { :confirm => 'Are you sure?' }, class:"btn btn-sm btn-danger"
 
 :javascript
   $('#table-warehouse').dataTable();

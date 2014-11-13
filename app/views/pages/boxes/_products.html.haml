@@ -1,6 +1,6 @@
 .btable.panel
   .panel-header
-    ="Listing products"
+    ="Produkty"
   .panel-body
     .scroller
       %table.table.table-striped.table-bordered.bootstrap-datatable.datatable#table-product
@@ -18,9 +18,9 @@
               %td= product.product_key
               %td= product.name
               %td= product.price
-              %td= link_to 'Show', product
-              %td= link_to 'Edit', edit_product_path(product)
-              %td= link_to 'Destroy', product, :method => :delete, :data => { :confirm => 'Are you sure?' }
+              %td= link_to 'Show', product, class:"btn btn-sm btn-primary"
+              %td= link_to 'Edit', edit_product_path(product), class:"btn btn-sm btn-primary"
+              %td= link_to 'Destroy', product, :method => :delete, :data => { :confirm => 'Are you sure?' }, class:"btn btn-sm btn-danger"
 
 
 

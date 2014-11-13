@@ -1,6 +1,6 @@
 .btable.panel
   .panel-header
-    ="Listing users"
+    ="Klienci"
   .panel-body
     .scroller
       %table.table.table-striped.table-bordered.bootstrap-datatable.datatable#table-user
@@ -14,11 +14,11 @@
         %tbody
           - @users.each do |user|
             %tr
-              %td= user.first_name
+              %td= user.name
               %td= user.firm
-              %td= link_to 'Show', user
-              %td= link_to 'Edit', edit_user_path(user)
-              %td= link_to 'Destroy', user, :method => :delete, :data => { :confirm => 'Are you sure?' }
+              %td= link_to 'Show', user, class:"btn btn-sm btn-primary"
+              %td= link_to 'Edit', edit_user_path(user), class:"btn btn-sm btn-primary"
+              %td= link_to 'Destroy', user, :method => :delete, :data => { :confirm => 'Are you sure?' }, class:"btn btn-sm btn-danger"
 
 
 
