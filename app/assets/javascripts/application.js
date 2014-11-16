@@ -18,3 +18,4 @@
 //= require dataTables/jquery.dataTables
 //= require jquery.slimscroll.min
 //= require_tree .
+

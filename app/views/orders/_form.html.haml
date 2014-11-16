@@ -1,49 +1,17 @@
-/ = form_for @order do |f|
-/   - if @order.errors.any?
-/     #error_explanation
-/       %h2= "#{pluralize(@order.errors.count, "error")} prohibited this order from being saved:"
-/       %ul
-/         - @order.errors.full_messages.each do |msg|
-/           %li= msg
-
-/   .form-horizontal
-/     .form-group 
-/       = f.label :product_id, :class => 'col-md-3 control-label'
-/       .col-md-5
-/         = f.collection_select :product_id, Product.all, :id, :name, :class => 'form-control'
-/     .form-group 
-/       = f.label :user_id, :class => 'col-md-3 control-label'
-/       .col-md-5
-/         = f.collection_select :user_id, User.all, :id, :name,:class => 'form-control'
-/     .form-group 
-/       = f.label :status, :class => 'col-md-3 control-label'
-/       .col-md-5
-/         = f.text_field :status, :class => 'form-control' 
-/     .form-group 
-/       = f.label :price, :class => 'col-md-3 control-label'
-/       .col-md-5
-/         = f.text_field :price, :class => 'form-control' 
-  
-/     .actions.col-md-3.col-md-offset-5
-/       = f.submit 'Save', :class => 'btn btn-primary'
-/       = link_to 'Back', products_path, :class => 'btn btn-primary'
 = form_tag add_product_order_path(@order.id || '0') do
   .row
     .col-md-12
-      .box
-        .box-header
+      .panel
+        .panel-header
           %h2
-            %i.fa.fa-edit>
             Dodawanie produktu
-        .box-content
+        .panel-body
           %form.form-inline{:role=>"form"}
-            .row
-              .col-md-12
-                .form-group.col-md-8
-                  = label_tag :product_kind_id
-                  = select_tag 'order_item[product_id]', options_from_collection_for_select(Product.all, :id, :name), class: "form-control", style:"padding-bottom:10px"
-                .form-group.col-md-4{:style=>"padding-top:25px"}
-                  %button.btn.btn-primary Dodaj produkt
+            .form-group
+              = label_tag :product_id
+              = select_tag 'order_item[product_id]', options_from_collection_for_select(Product.all, :id, :name), class: "form-control", style:"padding-bottom:10px"
+            .form-group
+              %button.btn.btn-primary Dodaj produkt
 
                 
 
@@ -51,16 +19,15 @@
 
 =form_for [@order], :class => 'form-horizontal' do |f|
   .row
-    .col-lg-12
-      .box
-        .box-header
+    .col-md-12
+      .panel
+        .panel-header
           %h2
-            %i.fa.fa-edit>
             -if @order.new_record?
-              Zlecenie zamówienia
+              Tworzenie zamówienia
             -else
               Edytowanie zamówienia
-        .box-content{:style=>"padding-left:25px; padding-right: 25px"}
+        .panel-body
           %table.table.table-striped.table-bordered.bootstrap-datatable.datatable
             %thead
               %tr
@@ -74,30 +41,32 @@
                 %tr
                   - unless k.object.new_record?
                     %td= k.object.product.name
-                    %td.col-md-1= k.text_field :quantity, :class => 'form-control'
-                    %td.col-md-3= k.object.order.deadline_at.strftime("%d-%m-%Y %H:%M") unless k.object.order.deadline_at.nil?
-                    %td= k.object.order.comment
-                    %td= link_to "<i class=\"fa fa-trash-o\"></i>".html_safe,destroy_product_orders_path(k.object.id), method: "delete", data: { confirm: 'Czy naprawdę chcesz usunąć?'}, class: "btn btn-danger"
-      .box
-        .box-header
-        .box-content
+                    %td.col-md-2= k.text_field :quantity, :class => 'form-control', style:"font-size: 12px;"
+                    %td= k.object.order.deadline_at.strftime("%d-%m-%Y %H:%M") unless k.object.order.deadline_at.nil?
+                    %td= k.object.order.description
+                    %td= link_to "Usuń",destroy_product_orders_path(k.object.id), method: "delete", data: { confirm: 'Czy naprawdę chcesz usunąć?'}, class: "btn btn-danger"
+      .panel
+        .panel-body{style:"padding-left:15px"}
           %form.form-horizontal
-            .form-group.col-md-12
+            .form-group 
+              = f.label :user,"Klient", :class => 'control-label'
+              = f.collection_select :user_id, User.all, :id, :name, {}, :class => 'form-control'
+            .form-group
               = f.label :deadline_at, "Termin", :class => 'control-label'
-              .input-group.date#datetimepicker2
-                =f.text_field :deadline_at, :class => 'form-control', :data => {:field => 'datetime'}
-                %div{id:'dtBox'}
-                -#
-                  %span.input-group-addon
-                    %span.glyphicon.glyphicon-calendar
-            .form-group.col-md-12
-              = f.label :description, "Uwagi/Komentarz wewnętrzny", :class => 'control-label'
-              .has-error
-                .control-label= form_field_errors f, :description 
-              = f.text_area :comment, :class => 'form-control', size:"10x5"
-            .form-actions{:style=>"margin-left:15px"}
+              =f.text_field :deadline_at, :class => 'form-control', :id=>'datetimepicker'
+            .form-group
+              = f.label :description, "Uwagi do zamówienia", :class => 'control-label'
+              = f.text_area :description, :class => 'form-control', size:"8x5"
+            .form-actions
               =f.button "Zapisz dane", :class=>"btn btn-primary", :type=>'submit' 
             
 
-  
-  
+:javascript
+  $(document).ready(function(){
+    $('#datetimepicker').datetimepicker({
+      language: 'pl'
+    });
+  });
+    
+
+

@@ -26,6 +26,7 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    @order_item = OrderItem.new
   end
 
   # GET /orders/1/edit
@@ -36,7 +37,7 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params)
-
+    @order_items = @order.order_items.build
     respond_to do |format|
       if @order.save
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
@@ -72,6 +73,23 @@ class OrdersController < ApplicationController
     end
   end
 
+  def add_product
+    order = Order.where(:id => params[:id]).first || Order.create!(:status => Order::New)
+    order_item = OrderItem.new(params.require(:order_item).permit(:id, :product_id, :quantity))
+    order_item.order_id = order.id
+    order_item.save
+    redirect_to order_path(order)
+    #authorize! :edit, :orders
+  end
+
+  def destroy_product
+    @order_item = OrderItem.find(params[:order_item_id])
+    order = Order.find(@order_item.order_id)
+    @order_item.destroy
+    redirect_to order_path(order)
+    authorize! :edit, :orders
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
@@ -80,6 +98,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:user_id, :status, :price, :description, :deadline_at,order_items_attributes: [:id, :quantity, :product_kind_id])
+      params.require(:order).permit(:user_id, :status, :price, :description, :deadline_at,order_items_attributes: [:id, :quantity, :product_id, :order_id])
     end
 end

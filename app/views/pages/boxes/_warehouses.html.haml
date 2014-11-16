@@ -3,7 +3,7 @@
     ="Magazyn"
   .panel-body
     .scroller
-      %table.table.table-striped.table-bordered.bootstrap-datatable.datatable#table-warehouse
+      %table.table.table-striped.table-bordered.bootstrap-datatable.datatable#table-warehouses
         %thead
           %tr
             %th Product
@@ -21,4 +21,4 @@
               %td= link_to 'Destroy', warehouse, :method => :delete, :data => { :confirm => 'Are you sure?' }, class:"btn btn-sm btn-danger"
 
 :javascript
-  $('#table-warehouse').dataTable();
+  $('#table-warehouses').dataTable();
