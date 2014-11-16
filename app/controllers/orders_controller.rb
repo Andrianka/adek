@@ -78,7 +78,7 @@ class OrdersController < ApplicationController
     order_item = OrderItem.new(params.require(:order_item).permit(:id, :product_id, :quantity))
     order_item.order_id = order.id
     order_item.save
-    redirect_to order_path(order)
+    redirect_to edit_order_path(order)
     #authorize! :edit, :orders
   end
 
