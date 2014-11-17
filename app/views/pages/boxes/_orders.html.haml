@@ -13,6 +13,7 @@
             %th
             %th
             %th
+            %th
         %tbody
           - @orders.each do |order|
             %tr
@@ -20,6 +21,7 @@
               %td= order.deadline_at
               %td= order.status
               %td= order.price
+              %td= link_to 'Faktura', order_path(order,format: "pdf"), class:"btn btn-sm btn-primary"
               %td= link_to 'Show', order, class:"btn btn-sm btn-primary"
               %td= link_to 'Edit', edit_order_path(order), class:"btn btn-sm btn-primary"
               %td= link_to 'Destroy', order, :method => :delete, :data => { :confirm => 'Are you sure?' }, class:"btn btn-sm btn-danger"

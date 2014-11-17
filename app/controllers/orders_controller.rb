@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render :pdf => "Zamówienie_#{@order.id}",
+        render :pdf => "Zamowienie_#{@order.id}",
                :template => 'orders/show.pdf.haml',
                :layout => false,
                :encoding => 'utf-8',
@@ -98,6 +98,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:user_id, :status, :price, :description, :deadline_at,order_items_attributes: [:id, :quantity, :product_id, :order_id])
+      params.require(:order).permit(:user_id, :status, :price, :description, :deadline_at,order_items_attributes: [:id, :quantity, :product_id, :order_id, :price])
     end
 end

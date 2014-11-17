@@ -10,7 +10,10 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
+ *= require coda-slider
+ *= require jquery.datetimepicker
+ *= require tooplate_style
+ *= require scaffolds
  *= require_tree ../../../vendor/assets-plugins/jquery/css
  *= require_tree ../../../vendor/assets-plugins/bootstrap/css
  *= require dataTables/jquery.dataTables

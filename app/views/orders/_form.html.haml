@@ -33,6 +33,7 @@
               %tr
                 %th Nazwa produktu
                 %th Ilość
+                %th Cena
                 %th Termin
                 %th Uwagi
                 %th Akcje
@@ -42,6 +43,7 @@
                   - unless k.object.new_record?
                     %td= k.object.product.name
                     %td.col-md-2= k.text_field :quantity, :class => 'form-control', style:"font-size: 12px;"
+                    %td.col-md-2= k.text_field :price, :class => 'form-control', style:"font-size: 12px;"
                     %td= k.object.order.deadline_at.strftime("%d-%m-%Y %H:%M") unless k.object.order.deadline_at.nil?
                     %td= k.object.order.description
                     %td= link_to "Usuń",destroy_product_orders_path(k.object.id), method: "delete", data: { confirm: 'Czy naprawdę chcesz usunąć?'}, class: "btn btn-danger"

@@ -4,20 +4,25 @@
     .col-md-3
       ="Termin zamówienia:"
     .col-md-6
-      = @order.deadline_at.strftime("%d-%m-%Y %H:%M") unless @order.deadline_at.nil?
+      = @order.deadline_at.strftime("%d-%m-%Y") unless @order.deadline_at.nil?
   .col-md-12{:style=>"padding:15px 0 15px 0"}
     .col-md-3
-      ="Uwagi/Komentarz wewnętrzny:"
+      ="Uwagi zamówienia"
     .col-md-6
-      = @order.descripton
+      = @order.description
+  .col-md-12{:style=>"padding:15px 0 15px 0"}
+    .col-md-3
+      ="Klient"
+    .col-md-6
+      = @order.user.name unless @order.user.nil?
+
 .row
   .col-md-12
-    .box{:style=>"border-left: 1px solid rgb(221, 221, 221)"}
-      .box-header{:style=>"padding-left:10px; background-color: #F2F2F2; color:black"}
+    .panel
+      .panel-header
         %h3
-          %i.fa.fa-edit>
-          Plan Produkcji
-      .box-content
+          Zamówienie
+      .panel-body
         %table.table.table-striped.table-bordered.bootstrap-datatable.datatable
           %thead
             %tr
@@ -27,9 +32,11 @@
           %tbody
             -@order.order_items.each do |k|
               %tr
-                %td.col-xs-1= k.order_id
+                %td.col-xs-1= k.product_id
                 %td.col-md-3= k.product.name
                 %td.col-md-1= k.quantity
+                %td.col-xs-1= k.price
+
    
     
           
