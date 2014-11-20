@@ -87,7 +87,7 @@ class OrdersController < ApplicationController
     order = Order.find(@order_item.order_id)
     @order_item.destroy
     redirect_to order_path(order)
-    authorize! :edit, :orders
+    # authorize! :edit, :orders
   end
 
   private

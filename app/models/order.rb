@@ -5,5 +5,15 @@ class Order < ActiveRecord::Base
 
 	accepts_nested_attributes_for :order_items
 
+
+
 	STATUS = [New = 'new', Done = 'done', Todo = 'todo']
+
+	def sum_price(sum=0)
+		self.order_items.each do |p|
+			sum += p.price * p.quantity unless p.price.nil? || p.quantity.nil?
+		end
+		return sum
+	end
+
 end

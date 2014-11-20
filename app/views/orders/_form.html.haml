@@ -58,10 +58,10 @@
                 .form-group.col-md-7
                   = f.label :deadline_at, "Termin:", :class => 'col-md-2 control-label'
                   .col-md-5= f.text_field :deadline_at, :class => 'form-control', :id=>'datetimepicker'
-                .form-group.col-md-7
-                  = f.label :vat, "VAT:", :class => 'col-md-2 control-label'
-                  .col-sm-5= f.text_field :vat, :class => 'form-control'
-                  ="%"
+                / .form-group.col-md-7
+                /   = f.label :vat, "VAT:", :class => 'col-md-2 control-label'
+                /   .col-sm-5= f.text_field :vat, :class => 'form-control'
+                /   ="%"
                 .form-group.col-md-7
                   = f.label :description, "Uwagi do zamówienia:", :class => 'col-md-2 control-label'
                   .col-md-5= f.text_area :description, :class => 'form-control', size:"8x5"
