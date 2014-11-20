@@ -12,5 +12,5 @@
 end
 
 11.times do |i|
-  Product.create(name:"product_#{i}", price:10.99)
+  Product.create(name:"product_#{i}", vat: 23)
 end
