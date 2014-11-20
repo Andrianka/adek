@@ -33,3 +33,6 @@ gem 'wkhtmltopdf-binary'
 gem 'wicked_pdf'
 gem 'jquery-datatables-rails', '~> 2.2.1'
 gem 'jquery-slimscroll-rails'
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem "therubyracer"
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
