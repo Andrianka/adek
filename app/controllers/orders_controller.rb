@@ -13,12 +13,12 @@ class OrdersController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render :pdf => "Zamowienie_#{@order.id}",
+        render :pdf => "Faktura #{@order.id}-#{@order.created_at.strftime("%d/%m/%Y")}",
                :template => 'orders/show.pdf.haml',
                :layout => false,
                :encoding => 'utf-8',
                :header => 
-                {:center => "Numer zamówienia #{@order.id}"}
+                {:left => "Faktura #{@order.id}-#{@order.created_at.strftime("%d/%m/%Y")}"}
       end
     end
   end

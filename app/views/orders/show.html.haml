@@ -23,15 +23,18 @@
           %tr
             %th Nazwa
             %th Ilość
+            %th Cena
         %tbody
           -@order.order_items.each do |p|
             %tr
               %td= p.product.name
               %td= p.quantity
+              %td= p.price
     %p
       Cena:
-      =@order.price
+      =@order.sum_price
     %p  
       = link_to 'Edit', edit_order_path(@order)
       \|
       = link_to 'Back', orders_path
+

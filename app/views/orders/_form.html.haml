@@ -3,14 +3,14 @@
     .col-md-12
       .panel
         .panel-header
-          %h2
+          %h3
             Dodawanie produktu
         .panel-body
           %form.form-inline{:role=>"form"}
-            .form-group
-              = label_tag :product_id
-              = select_tag 'order_item[product_id]', options_from_collection_for_select(Product.all, :id, :name), class: "form-control", style:"padding-bottom:10px"
-            .form-group
+            .form-group.col-md-7
+              .col-md-2= label_tag :product_id
+              .col-md-5= select_tag 'order_item[product_id]', options_from_collection_for_select(Product.all, :id, :name), class: "form-control", style:"padding-bottom:5px"
+            .form-group.col-md-7.col-md-offset-2
               %button.btn.btn-primary Dodaj produkt
 
                 
@@ -22,7 +22,7 @@
     .col-md-12
       .panel
         .panel-header
-          %h2
+          %h3
             -if @order.new_record?
               Tworzenie zamówienia
             -else
@@ -48,19 +48,26 @@
                     %td= k.object.order.description
                     %td= link_to "Usuń",destroy_product_orders_path(k.object.id), method: "delete", data: { confirm: 'Czy naprawdę chcesz usunąć?'}, class: "btn btn-danger"
       .panel
-        .panel-body{style:"padding-left:15px"}
-          %form.form-horizontal
-            .form-group 
-              = f.label :user,"Klient", :class => 'control-label'
-              = f.collection_select :user_id, User.all, :id, :name, {}, :class => 'form-control'
-            .form-group
-              = f.label :deadline_at, "Termin", :class => 'control-label'
-              =f.text_field :deadline_at, :class => 'form-control', :id=>'datetimepicker'
-            .form-group
-              = f.label :description, "Uwagi do zamówienia", :class => 'control-label'
-              = f.text_area :description, :class => 'form-control', size:"8x5"
-            .form-actions
-              =f.button "Zapisz dane", :class=>"btn btn-primary", :type=>'submit' 
+        .panel-body{style:"padding-left:15px;"}
+          .row
+            .col-md-12
+              %form.form-horizontal
+                .form-group.col-md-7 
+                  = f.label :user,"Klient:", :class => 'col-md-2 control-label'
+                  .col-md-5= f.collection_select :user_id, User.all, :id, :name, {}, :class => 'form-control'
+                .form-group.col-md-7
+                  = f.label :deadline_at, "Termin:", :class => 'col-md-2 control-label'
+                  .col-md-5= f.text_field :deadline_at, :class => 'form-control', :id=>'datetimepicker'
+                .form-group.col-md-7
+                  = f.label :vat, "VAT:", :class => 'col-md-2 control-label'
+                  .col-sm-5= f.text_field :vat, :class => 'form-control'
+                  ="%"
+                .form-group.col-md-7
+                  = f.label :description, "Uwagi do zamówienia:", :class => 'col-md-2 control-label'
+                  .col-md-5= f.text_area :description, :class => 'form-control', size:"8x5"
+                .form-actions.col-md-7.col-md-offset-2
+                  =f.button "Zapisz dane", :class=>"btn btn-primary", :type=>'submit'
+
             
 
 :javascript
