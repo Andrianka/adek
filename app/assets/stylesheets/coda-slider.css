@@ -119,7 +119,7 @@ ul.navigation a {
 	background: url(../assets/tooplate_menu_bg.png) no-repeat top center;
 }
 
-ul.navigation a:hover, ul.navigation a.selected {
+ul.navigation a:hover, ul.navigation li.selected a {
 	color: #000;
 	background: url(../assets/tooplate_menu_hover.png) center top no-repeat;
 }

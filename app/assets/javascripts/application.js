@@ -13,9 +13,17 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require turbolinks
 //= require_tree ../../../vendor/assets-plugins/jquery/js
 //= require dataTables/jquery.dataTables
 //= require jquery.slimscroll.min
 //= require_tree .
 
+$(document).ready(function(){
+
+	$('.navigation li').each(function(){
+		var href = $(this).find('a').attr('href');
+		if(href == window.location.pathname){
+			$(this).addClass('selected');
+		}
+	});
+});
