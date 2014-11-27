@@ -10,8 +10,8 @@
             .form-group.col-md-7
               .col-md-2= label_tag :product_id
               .col-md-5= select_tag 'order_item[product_id]', options_from_collection_for_select(Product.all, :id, :name), class: "form-control", style:"padding-bottom:5px"
-            .form-group.col-md-7.col-md-offset-2
-              %button.btn.btn-primary Dodaj produkt
+            .form-actions.col-md-7.col-md-offset-2
+              =button_tag 'Dodaj produkt', :class => 'btn btn-primary', type:"submit"
 
                 
 

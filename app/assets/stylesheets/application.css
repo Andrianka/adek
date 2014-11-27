@@ -37,6 +37,10 @@ ul.navigation .dropdown-menu{
 	}
 }
 
+.form-actions.col-md-7{
+	padding-left: 0px; 
+}
+
 .box{
 	padding: 10px;
 }
@@ -68,4 +72,3 @@ ul.navigation .dropdown-menu{
 h3{
 	margin: 10px;
 }
-
