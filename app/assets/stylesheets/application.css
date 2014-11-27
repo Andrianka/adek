@@ -72,3 +72,14 @@ ul.navigation .dropdown-menu{
 h3{
 	margin: 10px;
 }
+
+.devise label, .devise .header{
+	color: #fff;
+}
+.devise input{
+	color: black;
+}
+
+.devise a:hover { 
+	text-decoration: none; 
+}
