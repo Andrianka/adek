@@ -73,7 +73,7 @@ h3{
 	margin: 10px;
 }
 
-.devise label, .devise .header{
+.devise label, .devise .header, .devise i{
 	color: #fff;
 }
 .devise input{
