@@ -18,7 +18,7 @@
           - @orders.each do |order|
             %tr
               %td= order.user.name unless order.user.nil?
-              %td= order.deadline_at
+              %td= order.deadline_at.strftime("%d/%m/%Y")
               %td= order.status
               %td= order.sum_price_net 
               %td= link_to 'Faktura', order_path(order,format: "pdf"), class:"btn btn-sm btn-primary"
