@@ -20,7 +20,6 @@
       Produkty:
       =render 'table'
     %p  
-      = link_to 'Edit', edit_order_path(@order)
-      \|
-      = link_to 'Back', orders_path
+      .btn.btn-primary= link_to 'Edit', edit_order_path(@order)
+      .btn.btn-primary= link_to 'Back', orders_path
 
