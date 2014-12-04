@@ -1,0 +1,32 @@
+.panel-body
+  %table.table.table-striped.table-bordered.bootstrap-datatable.datatable
+    %thead
+      %tr
+        %th Numer 
+        %th Nazwa produktu
+        %th Ilość
+        %th Cena netto
+        %th Wartość netto
+        %th Stawka VAT
+        %th Kwota VAT
+        %th Wartość brutto 
+    %tbody
+      -@order.order_items.each do |k|
+        %tr
+          %td.col-xs-1= k.product_id
+          %td.col-xs-3= k.product.name
+          %td.col-xs-1= k.quantity
+          %td.col-xs-1= k.price
+          %td.col-xs-1.net= net_worth(k.price,k.quantity)
+          %td.col-xs-1= k.product.vat
+          %td.col-xs-1.vat= vat_value(k.price, k.product.vat, k.quantity)
+          %td.col-xs-1= net_worth(k.price,k.quantity) + vat_value(k.price, k.product.vat, k.quantity)
+      %tr.summary
+        %td
+        %td
+        %td
+        %td="Razem"
+        %td=@order.sum_price_net
+        %td= "X"
+        %td=@order.sum_price_vat_value
+        %td=@order.sum_net_worth

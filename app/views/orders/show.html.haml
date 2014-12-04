@@ -18,21 +18,7 @@
       =@order.status
     %p
       Produkty:
-      %table.table.table-striped.table-bordered.bootstrap-datatable.datatable
-        %thead
-          %tr
-            %th Nazwa
-            %th Ilość
-            %th Cena
-        %tbody
-          -@order.order_items.each do |p|
-            %tr
-              %td= p.product.name
-              %td= p.quantity
-              %td= p.price
-    %p
-      Cena:
-      =@order.sum_price_net
+      =render 'table'
     %p  
       = link_to 'Edit', edit_order_path(@order)
       \|
