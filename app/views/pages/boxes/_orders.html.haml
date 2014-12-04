@@ -20,7 +20,7 @@
               %td= order.user.name unless order.user.nil?
               %td= order.deadline_at
               %td= order.status
-              %td= order.sum_price 
+              %td= order.sum_price_net 
               %td= link_to 'Faktura', order_path(order,format: "pdf"), class:"btn btn-sm btn-primary"
               %td= link_to 'Show', order, class:"btn btn-sm btn-primary"
               %td= link_to 'Edit', edit_order_path(order), class:"btn btn-sm btn-primary"
