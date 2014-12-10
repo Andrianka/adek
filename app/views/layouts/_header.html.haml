@@ -17,12 +17,18 @@
           Akcje
           %span.caret
         %ul.dropdown-menu{:role => "menu"}
-          %li
-            %a{:href => new_order_path} Dodaj zamówienie
-          %li
-            %a{:href => new_user_path} Dodaj klienta
-          %li
-            %a{:href => new_product_path} Dodaj produkt
+          -if can? :access, :menu_order
+            %li
+              %a{:href => new_order_path} Dodaj zamówienie
+          -elsif can? :access, :menu_client
+            %li
+              %a{:href => new_user_path} Dodaj klienta
+          -elsif can? :access,:menu_product
+            %li
+              %a{:href => new_product_path} Dodaj produkt
+          -else
+            %li
+              Nie masz uprawnień
       %li
         - if user_signed_in?
           =link_to "Logout",    destroy_user_session_path, :method => :delete
